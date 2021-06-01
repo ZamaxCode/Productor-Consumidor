@@ -31,7 +31,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     bool end=false;
-
     int productsArray[20] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
     void realizarPC();

@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
 MainWindow::~MainWindow()
@@ -26,96 +27,11 @@ void MainWindow::on_goPB_clicked()
     realizarPC();
 }
 
-void MainWindow::realizarPC()
+void MainWindow::keyPressEvent(QKeyEvent *event)
 {
-    srand (time(NULL));
-    int turn;
-    int limit;
-    int img;
-    int contProduct=0;
-    int p=0;
-    int c=0;
-
-    QPixmap producer(":/Imagenes/productor.png");
-    QPixmap consumer(":/Imagenes/consumidor4.png");
-    QPixmap sleep(":/Imagenes/sleep.png");
-    QPixmap cancel(":/Imagenes/cancel.png");
-
-    while(true)
-    {
-        turn=rand()%10+1;
-        ui->consumerLB->setPixmap(sleep);
-
-        //entra productor
-        if(turn%2==0)
-        {
-            ui->consumerLB->setPixmap(sleep);
-            ui->producerLB->setPixmap(producer);
-            ui->stateConsumerLB->setText("ESTADO: durmiendo");
-
-            limit=rand()%3+3;
-
-            for (int i(0); i<limit; ++i) {
-
-                if(contProduct<20)
-                {
-                    ui->stateProducerLB->setText("ESTADO: produciendo "+QString::number(limit-i));
-
-                    productsArray[p]=1;
-                    img=rand()%5+1;
-                    putProduct(p+1,img);
-                    ++contProduct;
-                    ++p;
-                    if(p==20)
-                        p=0;
-                }
-                else
-                {
-                    ui->stateProducerLB->setText("ESTADO: intentando "+QString::number(limit-i));
-                    ui->cancel1LB->setPixmap(cancel);
-                }
-                delay(1000);
-                ui->cancel1LB->clear();
-            }
-        }
-
-        //entra consumidor
-        else
-        {
-            ui->producerLB->setPixmap(sleep);
-            ui->consumerLB->setPixmap(consumer);
-            ui->stateProducerLB->setText("ESTADO: durmiendo");
-
-            limit=rand()%3+3;
-
-            for (int i(0); i<limit; ++i) {
-
-                if(contProduct>0)
-                {
-                    ui->stateConsumerLB->setText("ESTADO: consumiendo "+QString::number(limit-i));
-
-                    productsArray[c]=1;
-                    removeProduct(c+1);
-                    --contProduct;
-                    ++c;
-                    if(c==20)
-                        c=0;
-
-                }
-                else
-                {
-                    ui->stateConsumerLB->setText("ESTADO: intentando "+QString::number(limit-i));
-                    ui->cancel2LB->setPixmap(cancel);
-                }
-                delay(1000);
-                ui->cancel2LB->clear();
-            }
-        }
-
-        if(end)
-            break;
-    }
-    ui->stackedWidget->setCurrentIndex(2);
+    if(!ui->goPB->isEnabled())
+        if(event->key()==Qt::Key_Escape)
+            end=true;
 }
 
 void MainWindow::delay(const int &mSeconds)
@@ -299,9 +215,89 @@ void MainWindow::removeProduct(const int &pos)
     }
 }
 
-void MainWindow::keyPressEvent(QKeyEvent *event)
+void MainWindow::realizarPC()
 {
-    if(!ui->goPB->isEnabled())
-        if(event->key()==Qt::Key_Escape)
-            end=true;
+    srand (time(NULL));
+    int turn;
+    int limit;
+    int img;
+    int consumerIMG;
+    int p=0;
+    int c=0;
+
+    QPixmap producer(":/Imagenes/productor.png");
+    QPixmap sleep(":/Imagenes/sleep.png");
+    QPixmap cancel(":/Imagenes/cancel.png");
+
+    while(!end)
+    {
+        turn=rand()%10+1;
+
+        if(turn%2==0)
+        {
+            ui->consumerLB->setPixmap(sleep);
+            ui->producerLB->setPixmap(producer);
+            ui->stateConsumerLB->setText("ESTADO: durmiendo");
+
+            limit=rand()%3+3;
+
+            for (int i(0); i<limit; ++i) {
+
+                if(productsArray[p] != 1)
+                {
+                    ui->stateProducerLB->setText("ESTADO: produciendo "+QString::number(limit-i));
+
+                    productsArray[p]=1;
+                    img=rand()%5+1;
+                    putProduct(p+1,img);
+                    ++p;
+                    if(p==20)
+                        p=0;
+                }
+                else
+                {
+                    ui->stateProducerLB->setText("ESTADO: intentando "+QString::number(limit-i));
+                    ui->cancel1LB->setPixmap(cancel);
+                }
+                delay(1000);
+                ui->cancel1LB->clear();
+            }
+        }
+
+        else
+        {
+            consumerIMG=rand()%5+1;
+            QPixmap consumer(":/Imagenes/consumidor"+QString::number(consumerIMG)+".png");
+
+            ui->producerLB->setPixmap(sleep);
+            ui->consumerLB->setPixmap(consumer);
+            ui->stateProducerLB->setText("ESTADO: durmiendo");
+
+            limit=rand()%3+3;
+
+            for (int i(0); i<limit; ++i) {
+
+                if(productsArray[c] != 0)
+                {
+                    ui->stateConsumerLB->setText("ESTADO: consumiendo "+QString::number(limit-i));
+
+                    productsArray[c]=0;
+                    removeProduct(c+1);
+                    ++c;
+                    if(c==20)
+                        c=0;
+
+                }
+                else
+                {
+                    ui->stateConsumerLB->setText("ESTADO: intentando "+QString::number(limit-i));
+                    ui->cancel2LB->setPixmap(cancel);
+                }
+                delay(1000);
+                ui->cancel2LB->clear();
+            }
+        }
+    }
+    ui->stackedWidget->setCurrentIndex(2);
 }
+

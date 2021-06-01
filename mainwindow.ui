@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1105</width>
-    <height>624</height>
+    <width>1100</width>
+    <height>620</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1100</width>
+    <height>620</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1100</width>
+    <height>620</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Productor - Consumidor</string>
@@ -17,12 +29,24 @@
    <iconset resource="Recursos.qrc">
     <normaloff>:/Imagenes/productor.png</normaloff>:/Imagenes/productor.png</iconset>
   </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>false</bool>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="welcomePage">
        <widget class="QPushButton" name="startPB">
@@ -47,9 +71,9 @@ font: 48pt &quot;MS Shell Dlg 2&quot;;</string>
         <property name="geometry">
          <rect>
           <x>170</x>
-          <y>40</y>
+          <y>120</y>
           <width>301</width>
-          <height>421</height>
+          <height>271</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -80,11 +104,14 @@ Para iniciar solamente presione el boton que se encuentra a la derecha de la pan
           <height>631</height>
          </rect>
         </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
         <property name="text">
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="Recursos.qrc">:/Imagenes/menu-pizarra-caballete-mesa-madera-fondo-restaurante-desenfoque_7189-1558.jpg</pixmap>
+         <pixmap resource="Recursos.qrc">:/Imagenes/fondoInicial.jpg</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -102,81 +129,22 @@ Para iniciar solamente presione el boton que se encuentra a la derecha de la pan
         <property name="geometry">
          <rect>
           <x>-20</x>
-          <y>-20</y>
+          <y>-30</y>
           <width>1121</width>
           <height>641</height>
          </rect>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
         </property>
         <property name="text">
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="Recursos.qrc">:/Imagenes/tablas-madera-restaurante-borroso-fondo_1253-56.jpg</pixmap>
+         <pixmap resource="Recursos.qrc">:/Imagenes/fondoEjecucion.jpg</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="blurry1LB">
-        <property name="geometry">
-         <rect>
-          <x>240</x>
-          <y>70</y>
-          <width>200</width>
-          <height>200</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>200</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>200</width>
-          <height>200</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgba(0, 0, 0, 150);</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="blurry2LB">
-        <property name="geometry">
-         <rect>
-          <x>640</x>
-          <y>70</y>
-          <width>200</width>
-          <height>200</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>200</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>200</width>
-          <height>200</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgba(0, 0, 0, 150);</string>
-        </property>
-        <property name="text">
-         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -204,7 +172,7 @@ Para iniciar solamente presione el boton que se encuentra a la derecha de la pan
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">background-color: rgba(0, 0, 0, 150);</string>
         </property>
         <property name="text">
          <string/>
@@ -238,7 +206,7 @@ Para iniciar solamente presione el boton que se encuentra a la derecha de la pan
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">background-color: rgba(0, 0, 0, 150);</string>
         </property>
         <property name="text">
          <string/>
@@ -920,7 +888,7 @@ font: 30pt &quot;MS Shell Dlg 2&quot;;</string>
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="Recursos.qrc">:/Imagenes/blurred-busy-restaurant-background-free-photo.jpg</pixmap>
+         <pixmap resource="Recursos.qrc">:/Imagenes/fondoFinal.jpg</pixmap>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -958,7 +926,6 @@ color: rgb(255, 255, 255);</string>
     </item>
    </layout>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
   <include location="Recursos.qrc"/>

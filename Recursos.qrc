@@ -1,20 +1,20 @@
 <RCC>
     <qresource prefix="/">
-        <file>Imagenes/menu-pizarra-caballete-mesa-madera-fondo-restaurante-desenfoque_7189-1558.jpg</file>
-        <file>Imagenes/tablas-madera-restaurante-borroso-fondo_1253-56.jpg</file>
-        <file>Imagenes/blurred-busy-restaurant-background-free-photo.jpg</file>
+        <file>Imagenes/1.png</file>
+        <file>Imagenes/2.png</file>
+        <file>Imagenes/3.png</file>
+        <file>Imagenes/4.png</file>
+        <file>Imagenes/5.png</file>
         <file>Imagenes/cancel.png</file>
         <file>Imagenes/consumidor1.png</file>
         <file>Imagenes/consumidor2.png</file>
         <file>Imagenes/consumidor3.png</file>
         <file>Imagenes/consumidor4.png</file>
         <file>Imagenes/consumidor5.png</file>
+        <file>Imagenes/fondoEjecucion.jpg</file>
+        <file>Imagenes/fondoFinal.jpg</file>
+        <file>Imagenes/fondoInicial.jpg</file>
         <file>Imagenes/productor.png</file>
         <file>Imagenes/sleep.png</file>
-        <file>Imagenes/1.png</file>
-        <file>Imagenes/2.png</file>
-        <file>Imagenes/3.png</file>
-        <file>Imagenes/4.png</file>
-        <file>Imagenes/5.png</file>
     </qresource>
 </RCC>
